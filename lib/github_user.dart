@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:github_user_search/components/focused_text.dart';
 import 'package:github_user_search/components/user_info_tiles.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GitHubUser extends StatefulWidget {
   GitHubUser({Key? key}) : super(key: key);
@@ -17,20 +20,37 @@ class _GitHubUserState extends State<GitHubUser> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Logo and theme toggle Button
+            // Logo and github logo
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('GitHub Finder'),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.sunny),
-                )
+                Text(
+                  'GitHub Finder',
+                  style: GoogleFonts.spaceMono(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                FaIcon(
+                  FontAwesomeIcons.github,
+                  color: Colors.white,
+                ),
               ],
+            ),
+            const SizedBox(
+              height: 10,
             ),
 
             // username input field
             TextField(
+              style: GoogleFonts.spaceMono(
+                  textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              )),
               decoration: InputDecoration(
                 suffixIcon: IconButton(
                   onPressed: () {},
@@ -39,10 +59,14 @@ class _GitHubUserState extends State<GitHubUser> {
                   ),
                 ),
                 hintText: 'Search GitHub username',
-                enabledBorder: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepPurple.shade300,
+                  ),
+                ),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: Colors.blue,
+                  color: Colors.white,
                 )),
               ),
             ),
@@ -62,8 +86,22 @@ class _GitHubUserState extends State<GitHubUser> {
                 ),
                 Column(
                   children: [
-                    Text('The Octocat'),
-                    Text('@Octocat'),
+                    Text(
+                      'The Octocat',
+                      style: GoogleFonts.spaceMono(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '@Octocat',
+                      style: GoogleFonts.spaceMono(
+                        textStyle: TextStyle(
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ],
@@ -74,7 +112,14 @@ class _GitHubUserState extends State<GitHubUser> {
             // Bio
             Row(
               children: [
-                Text('This user has no bio'),
+                Text(
+                  'This user has no bio',
+                  style: GoogleFonts.spaceMono(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             ),
 
@@ -82,28 +127,32 @@ class _GitHubUserState extends State<GitHubUser> {
               height: 10,
             ),
             // repos, Followers, Following
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.deepPurple.shade200,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Repos
-                  Column(
-                    children: [Text('Repos'), Text('8')],
-                  ),
-                  // Followers
-                  Column(
-                    children: [Text('Followers'), Text('7857')],
-                  ),
-                  // Following
-                  Column(
-                    children: [Text('Following'), Text('9')],
-                  )
-                ],
+            Neumorphic(
+              style: NeumorphicStyle(
+                  shape: NeumorphicShape.concave,
+                  boxShape:
+                      NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                  depth: 8,
+                  intensity: 0.5,
+                  lightSource: LightSource.topLeft,
+                  color: Colors.deepPurple.shade200),
+              child: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.shade200,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Repos
+                    FocusedText(description: 'Repos', value: '8'),
+                    // Followers
+                    FocusedText(description: 'Followers', value: '7857'),
+                    // Following
+                    FocusedText(description: 'Following', value: '9'),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
