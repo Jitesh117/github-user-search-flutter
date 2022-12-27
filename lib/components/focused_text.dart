@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FocusedText extends StatelessWidget {
+class FocusedText extends StatefulWidget {
   const FocusedText({
     Key? key,
     required this.description,
@@ -11,11 +11,16 @@ class FocusedText extends StatelessWidget {
   final String value;
 
   @override
+  State<FocusedText> createState() => _FocusedTextState();
+}
+
+class _FocusedTextState extends State<FocusedText> {
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          description,
+          widget.description,
           style: GoogleFonts.spaceMono(
               textStyle: TextStyle(
             fontWeight: FontWeight.bold,
@@ -23,7 +28,7 @@ class FocusedText extends StatelessWidget {
           )),
         ),
         Text(
-          value,
+          widget.value,
           style: GoogleFonts.spaceMono(
             textStyle: TextStyle(
               color: Colors.white,

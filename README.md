@@ -1,16 +1,10 @@
-# github_user_search
+# GitHub_User_Search
 
-A new Flutter project.
+Flutter app to search GitHub profile information of a given user
+# How it looks
+<p align = "center">
+<img width = 250 src = "./lib/assets/octocat.jpg">
+<img width = 250 src = "./lib/assets/jitesh.jpg">
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</p>
